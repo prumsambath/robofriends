@@ -5,10 +5,19 @@ import App from './containers/App';
 import 'tachyons';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { searchRobots } from './reducers';
+import { createLogger } from 'redux-logger';
 
-const store = createStore(searchRobots);
+const logger = createLogger();
+const composeEnhancers =
+  typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
+    : compose;
+
+const enhancer = composeEnhancers(applyMiddleware(logger));
+
+const store = createStore(searchRobots, enhancer);
 
 ReactDOM.render(
   <Provider store={store}>

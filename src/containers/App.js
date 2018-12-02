@@ -6,6 +6,7 @@ import ErrorBoundary from '../components/ErrorBoundary';
 import './App.css';
 import { connect } from 'react-redux';
 import { setSearchField, requestRobots } from '../actions';
+import Header from '../components/Header';
 
 class App extends Component {
   componentDidMount() {
@@ -21,7 +22,7 @@ class App extends Component {
       <h1 className="tc">Loading...</h1>
     ) : (
       <div className="tc">
-        <h1 className="f2">ROBOFRIENDS</h1>
+        <Header />
         <SearchBox searchChange={onSearchChange} />
 
         <Scroll>

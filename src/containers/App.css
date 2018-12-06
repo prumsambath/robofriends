@@ -8,6 +8,10 @@ body {
     rgba(0, 128, 128, 1) 100%
   );
 }
+@font-face {
+  font-display: swap;
+}
+
 h1 {
   font-family: Orbitron;
   font-weight: 200;
